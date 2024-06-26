@@ -1,0 +1,39 @@
+{
+  "name": "crawlab-vuepress-plugin-mermaidjs",
+  "version": "2.0.8",
+  "description": "A Vuepress plugin providing easy MermaidJS diagramming with customizations for Crawlab",
+  "type": "module",
+  "main": "dist/index.min.js",
+  "repository": "https://github.com/crawlab-team/vuepress-plugin-mermaidjs",
+  "author": "Marvin Zhang",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/mermaid": "^9.1.0",
+    "@vuepress/client": "2.0.0-beta.52",
+    "@vuepress/shared": "^2.0.0-beta.35",
+    "@vuepress/shared-utils": "^1.9.7",
+    "@vuepress/utils": "2.0.0-beta.52",
+    "cypress": "^4.12.1",
+    "cypress-plugin-snapshots": "^1.4.4",
+    "http-server": "^14.1.0",
+    "js-base64": "2.6.4",
+    "mermaid": "9.1.7",
+    "start-server-and-test": "^1.14.0",
+    "typescript": "^4.8.4",
+    "vue": "^3.2.37",
+    "vuepress": "2.0.0-beta.52"
+  },
+  "scripts": {
+    "test:setup-docs-server": "vuepress build docs && http-server docs/.vuepress/dist",
+    "cypress:run": "cypress run",
+    "test": "start-server-and-test test:setup-docs-server http-get://127.0.0.1:8080 cypress:run",
+    "build": "tsc -p tsconfig.json && babel src/*.ts --out-file dist/index.min.js --extensions \".ts\" --source-maps inline",
+    "dev": "vuepress dev docs"
+  },
+  "files": [
+    "dist"
+  ]
+}
